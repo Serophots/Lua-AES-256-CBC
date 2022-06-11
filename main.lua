@@ -1,3 +1,4 @@
+
 --AES-256-CBC encryption algorithm, taken from Lua Lockbox
 --https://github.com/somesocks/lua-lockbox
 
@@ -1395,9 +1396,9 @@ local crypt = {}; do
   end
 end
 
-local key = "603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4"
-local iv = "000102030405060708090A0B0C0D0E0F"
-local plaintext = "6bc1bee22e409f96e93d7e117393172a"
+local key = "603deb1015ca71be2b73aef0857d77811f352c073b6108d72d9810a30914dff4" --Key, 64 hex charcaters
+local iv = "000102030405060708090A0B0C0D0E0F" -- Initialisation vector, 32 characters
+local plaintext = "6bc1bee22e409f96e93d7e117393172a" -- Plain text to encrypt, any length
 
 local encrypted = crypt.encrypt(key, iv, plaintext)
 local decrypted = crypt.decrypt(key, iv, encrypted)
