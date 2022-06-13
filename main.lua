@@ -1404,3 +1404,20 @@ local encrypted = crypt.encrypt(key, iv, plaintext)
 local decrypted = crypt.decrypt(key, iv, encrypted)
 print("Encrypted:", #encrypted, encrypted)
 print("Decrypted:", #decrypted, decrypted)
+
+
+
+
+--Same thing but in JavaScript:
+
+-- const CryptoJS = require("crypto-js") -> npm install crypto-js
+-- const crypt = {
+--     encrypt: (plaintext, key, iv) => CryptoJS.AES.encrypt(CryptoJS.enc.Hex.parse(plaintext), CryptoJS.enc.Hex.parse(key), { mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.NoPadding, iv: CryptoJS.enc.Hex.parse(iv)}).ciphertext.toString(),
+--     decrypt: (ciphertext, key, iv) => CryptoJS.AES.decrypt({ciphertext: CryptoJS.enc.Hex.parse(ciphertext)}, CryptoJS.enc.Hex.parse(key), { mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.NoPadding, iv: CryptoJS.enc.Hex.parse(iv)}).toString(),
+-- }
+
+-- crypt.encrypt("string", "string", "string")
+-- crypt.decrypt("string", "string", "string")
+
+--NOTE: Javascript implementation does not also have Custom Padding featured in the LUA version. You must add this yourself.
+--Therefore, crypt.encrypt/decrypt strings must be Hex characters of specific lengths
