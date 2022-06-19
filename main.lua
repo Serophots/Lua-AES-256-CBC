@@ -1360,7 +1360,7 @@ local crypt = {}; do
 
   local function HexUnpad(s)
     s = (s:gsub("%x%x", function(digits) return string.char(tonumber(digits, 16)) end))
-    return s:gsub(PadCharacter, "")
+    return ({s:gsub(PadCharacter, "")})[1]
   end
 
   function crypt.encrypt(stringkey, stringiv, stringplaintext)
